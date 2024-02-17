@@ -15,4 +15,4 @@ grouped_members_array = [grouping_pattern1, grouping_pattern2]
 
 shuffled_group = grouped_members_array.sample
 p shuffled_group[0].sort
-p shuffled_group[1].sor
+p shuffled_group[1].sort
