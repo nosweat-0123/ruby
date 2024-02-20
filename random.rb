@@ -1,18 +1,8 @@
 members = %w[A B C D E F]
 
-def grouping1(group)
-  group.shuffle.each_slice(3).to_a
-end
+group_1_1 = members.sample(2).to_a.sort
+group_1_2 = members.sample(3).to_a.sort
+group_1_array = [group_1_1, group_1_2]
+p group_1 = group_1_array.sample
+p group_2 = members - group_1
 
-def grouping2(group)
-  group.shuffle.each_slice(4).to_a
-end
-
-grouping_pattern1 = grouping1(members)
-grouping_pattern2 = grouping2(members)
-
-grouped_members_array = [grouping_pattern1, grouping_pattern2]
-
-shuffled_group = grouped_members_array.sample
-p shuffled_group[0].sort
-p shuffled_group[1].sort
