@@ -188,6 +188,5 @@ if (1..12).cover?(selected_month)
     end
   end
 else
-  # エラーメッセージを表示
   puts "#{selected_month} is neither a month number (1..12) nor a name"
 end
