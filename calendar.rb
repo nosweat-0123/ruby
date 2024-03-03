@@ -18,173 +18,79 @@ if (1..12).cover?(selected_month)
   puts Date.today.year
 
   # 曜日を表示
-  weeks = [1, 2, 3, 4, 5, 6, 7]
-  weeks.each do |n|
-    case n
-    when 1
-      print '月'
-    when 2
-      print ' 火'
-    when 3
-      print ' 水'
-    when 4
-      print ' 木'
-    when 5
-      print ' 金'
-    when 6
-      print ' 土'
-    when 7
-      puts ' 日'
-    end
-  end
+  puts '月 火 水 木 金 土 日'
 
   # カレンダーを表示
   (first_day.day..last_day.day).each do |n|
-    # 月曜始まりの時の処理
-    if first_day.cwday == 1
-      if n == 1
-        print " #{n}"
-        # １行目の日付の書き方
-      elsif n < 10
-        if (n % 7).zero?
-          puts "  #{n}"
-        elsif n % 7 == 1
-          print " #{n}"
-        else
-          print "  #{n}"
-        end
-        # ２行目以降の日付の書き方
-      elsif (n % 7).zero?
-        puts " #{n}"
-      elsif n % 7 == 1
-        print n
+    if n == 1
+      if first_day.cwday != 7
+        print " " * (3 * first_day.cwday - 2) + "#{n}"
       else
-        print " #{n}"
+        puts " " * (3 * first_day.cwday - 2) + "#{n}"
       end
-    # 火曜始まりの場合の処理
-    elsif first_day.cwday == 2
-      if n == 1
-        print "    #{n}"
-        # １行目の日付の書き方
-      elsif n < 10
-        if n % 7 == 6
-          puts "  #{n}"
-        elsif (n % 7).zero?
-          print " #{n}"
-        else
-          print "  #{n}"
-        end
-        # ２行目以降の日付の書き方
-      elsif n % 7 == 6
-        puts " #{n}"
-      elsif (n % 7).zero?
-        print n
-      else
-        print " #{n}"
-      end
-    # 水曜始まりの場合の処理
-    elsif first_day.cwday == 3
-      if n == 1
-        print "       #{n}"
-        # １行目の日付の書き方
-      elsif n < 10
-        if n % 7 == 5
-          puts "  #{n}"
-        elsif n % 7 == 6
-          print " #{n}"
-        else
-          print "  #{n}"
-        end
-        # ２行目以降の日付の書き方
-      elsif n % 7 == 5
-        puts " #{n}"
-      elsif n % 7 == 6
-        print n
-      else
-        print " #{n}"
-      end
-    # 木曜始まりの場合の処理
-    elsif first_day.cwday == 4
-      if n == 1
-        print "          #{n}"
-        # １行目の日付の書き方
-      elsif n < 10
-        if n % 7 == 4
-          puts "  #{n}"
-        elsif n % 7 == 5
-          print " #{n}"
-        else
-          print "  #{n}"
-        end
-        # ２行目以降の日付の書き方
-      elsif n % 7 == 4
-        puts " #{n}"
-      elsif n % 7 == 5
-        print n
-      else
-        print " #{n}"
-      end
-    # 金曜始まりの場合の処理
-    elsif first_day.cwday == 5
-      if n == 1
-        print "             #{n}"
-        # １行目の日付の書き方
-      elsif n < 10
-        if n % 7 == 3
-          puts "  #{n}"
-        elsif n % 7 == 4
-          print " #{n}"
-        else
-          print "  #{n}"
-        end
-        # ２行目以降の日付の書き方
-      elsif n % 7 == 3
-        puts " #{n}"
-      elsif n % 7 == 4
-        print n
-      else
-        print " #{n}"
-      end
-    # 土曜始まりの場合の処理
-    elsif first_day.cwday == 6
-      if n == 1
-        print "                #{n}"
-        # １行目の日付の書き方
-      elsif n < 10
-        if n % 7 == 2
-          puts "  #{n}"
-        elsif n % 7 == 3
-          print " #{n}"
-        else
-          print "  #{n}"
-        end
-        # ２行目以降の日付の書き方
-      elsif n % 7 == 2
-        puts " #{n}"
-      elsif n % 7 == 3
-        print n
-      else
-        print " #{n}"
-      end
-    # 日曜始まりの場合の処理
-    elsif n == 1
-      puts "                   #{n}"
-    # １行目の日付の書き方
-    elsif n < 10
+    #月曜始まりの処理
+    elsif first_day.cwday == 1
       if n % 7 == 1
-        puts "  #{n}"
-      elsif n % 7 == 2
-        print " #{n}"
+        print "#{n}".rjust(2," ")
+      elsif n % 7 == 0
+        puts "#{n}".rjust(3," ")
       else
-        print "  #{n}"
+        print "#{n}".rjust(3," ")
       end
-    # ２行目以降の日付の書き方
-    elsif n % 7 == 1
-      puts " #{n}"
-    elsif n % 7 == 2
-      print n
-    else
-      print " #{n}"
+    #火曜始まりの処理
+    elsif first_day.cwday == 2
+      if n % 7 == 0
+        print "#{n}".rjust(2," ")
+      elsif n % 7 == 6
+        puts "#{n}".rjust(3," ")
+      else
+        print "#{n}".rjust(3," ")
+      end
+    #水曜始まりの処理
+    elsif first_day.cwday == 3
+      if n % 7 == 6
+        print "#{n}".rjust(2," ")
+      elsif n % 7 == 5
+        puts "#{n}".rjust(3," ")
+      else
+        print "#{n}".rjust(3," ")
+      end
+    #木曜始まりの処理
+    elsif first_day.cwday == 4
+      if n % 7 == 5
+        print "#{n}".rjust(2," ")
+      elsif n % 7 == 4
+        puts "#{n}".rjust(3," ")
+      else
+        print "#{n}".rjust(3," ")
+      end
+    #金曜始まりの処理
+    elsif first_day.cwday == 5
+      if n % 7 == 4
+        print "#{n}".rjust(2," ")
+      elsif n % 7 == 3
+        puts "#{n}".rjust(3," ")
+      else
+        print "#{n}".rjust(3," ")
+      end
+    #土曜始まりの処理
+    elsif first_day.cwday == 6
+      if n % 7 == 3
+        print "#{n}".rjust(2," ")
+      elsif n % 7 == 2
+        puts "#{n}".rjust(3," ")
+      else
+        print "#{n}".rjust(3," ")
+      end
+    #日曜始まりの処理
+    elsif first_day.cwday == 7
+      if n % 7 == 2
+        print "#{n}".rjust(2," ")
+      elsif n % 7 == 1
+        puts "#{n}".rjust(3," ")
+      else
+        print "#{n}".rjust(3," ")
+      end
     end
   end
 else
