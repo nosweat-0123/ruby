@@ -21,76 +21,19 @@ if (1..12).cover?(selected_month)
   puts '月 火 水 木 金 土 日'
 
   # カレンダーを表示
-  (first_day.day..last_day.day).each do |n|
-    if n == 1
-      if first_day.cwday != 7
-        print " " * (3 * first_day.cwday - 2) + "#{n}"
+  (first_day..last_day).each do |day|
+    if day == first_day
+      if day.sunday?
+        puts " " * (3 * day.cwday - 2) + "#{day.day}"
       else
-        puts " " * (3 * first_day.cwday - 2) + "#{n}"
+        print " " * (3 * day.cwday - 2) + "#{day.day}"
       end
-    #月曜始まりの処理
-    elsif first_day.cwday == 1
-      if n % 7 == 1
-        print "#{n}".rjust(2," ")
-      elsif n % 7 == 0
-        puts "#{n}".rjust(3," ")
-      else
-        print "#{n}".rjust(3," ")
-      end
-    #火曜始まりの処理
-    elsif first_day.cwday == 2
-      if n % 7 == 0
-        print "#{n}".rjust(2," ")
-      elsif n % 7 == 6
-        puts "#{n}".rjust(3," ")
-      else
-        print "#{n}".rjust(3," ")
-      end
-    #水曜始まりの処理
-    elsif first_day.cwday == 3
-      if n % 7 == 6
-        print "#{n}".rjust(2," ")
-      elsif n % 7 == 5
-        puts "#{n}".rjust(3," ")
-      else
-        print "#{n}".rjust(3," ")
-      end
-    #木曜始まりの処理
-    elsif first_day.cwday == 4
-      if n % 7 == 5
-        print "#{n}".rjust(2," ")
-      elsif n % 7 == 4
-        puts "#{n}".rjust(3," ")
-      else
-        print "#{n}".rjust(3," ")
-      end
-    #金曜始まりの処理
-    elsif first_day.cwday == 5
-      if n % 7 == 4
-        print "#{n}".rjust(2," ")
-      elsif n % 7 == 3
-        puts "#{n}".rjust(3," ")
-      else
-        print "#{n}".rjust(3," ")
-      end
-    #土曜始まりの処理
-    elsif first_day.cwday == 6
-      if n % 7 == 3
-        print "#{n}".rjust(2," ")
-      elsif n % 7 == 2
-        puts "#{n}".rjust(3," ")
-      else
-        print "#{n}".rjust(3," ")
-      end
-    #日曜始まりの処理
-    elsif first_day.cwday == 7
-      if n % 7 == 2
-        print "#{n}".rjust(2," ")
-      elsif n % 7 == 1
-        puts "#{n}".rjust(3," ")
-      else
-        print "#{n}".rjust(3," ")
-      end
+    elsif day.sunday?
+      puts "#{day.day}".rjust(3," ")
+    elsif day.monday?
+      print "#{day.day}".rjust(2," ")
+    else
+      print "#{day.day}".rjust(3," ")
     end
   end
 else
