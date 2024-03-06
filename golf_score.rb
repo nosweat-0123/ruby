@@ -30,4 +30,3 @@ regulation_number_of_strokes.zip(actual_strokes) do |r,a|
 end
 print result.join(',')
 
-
