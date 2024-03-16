@@ -16,31 +16,32 @@ class Main < VendingMachine
   puts vendingmachine.check_stocks
 
   # それぞれのドリンクを購入できるか確認
-  puts vendingmachine.judge_to_buy_pepsi(suica1)
-  puts vendingmachine.judge_to_buy_monster(suica1)
-  puts vendingmachine.judge_to_buy_irohasu(suica1)
+  puts vendingmachine.judge_to_buy_juice(suica1,PEPSI)
+  puts vendingmachine.judge_to_buy_juice(suica1,IROHASU)
+  puts vendingmachine.judge_to_buy_juice(suica1,MONSTER)
 
   # それぞれのドリンクを購入と売り上げ確認
-  puts vendingmachine.buy_pepsi(suica1)
-  puts vendingmachine.buy_monster(suica1)
-  puts vendingmachine.buy_irohasu(suica1)
+  puts vendingmachine.buy_juice(suica1,PEPSI)
+  puts vendingmachine.buy_juice(suica1,IROHASU)
+  puts vendingmachine.buy_juice(suica1,MONSTER)
   puts vendingmachine.check_stocks
   puts vendingmachine.check_current_sales
 
   # Suica2で、購入時の例外を確認
   suica2 = Suica.new
-  puts vendingmachine.buy_pepsi(suica2)
-  puts vendingmachine.buy_pepsi(suica2)
-  puts vendingmachine.buy_pepsi(suica2)
-  puts vendingmachine.buy_pepsi(suica2)
+  puts vendingmachine.buy_juice(suica2,PEPSI)
+  puts vendingmachine.buy_juice(suica2,PEPSI)
+  puts vendingmachine.buy_juice(suica2,PEPSI)
+  puts vendingmachine.buy_juice(suica2,PEPSI)
 
   # 在庫補充
-  puts vendingmachine.restock_pepsi
-  puts vendingmachine.restock_irohasu
-  puts vendingmachine.restock_monster
+  puts vendingmachine.restock_juice(PEPSI)
+  puts vendingmachine.restock_juice(IROHASU)
+  puts vendingmachine.restock_juice(MONSTER)
   # 補充されたか確認
   puts vendingmachine.check_stocks
 
   # 購入できるドリンクのリストを表示
   puts vendingmachine.list(suica1)
+  
 end
